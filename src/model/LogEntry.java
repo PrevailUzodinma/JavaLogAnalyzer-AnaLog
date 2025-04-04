@@ -13,7 +13,22 @@ public class LogEntry {
         this.message = message;
     }
 
+    // using encapsulation, implement public methods to get each private field
+    public String getTimestamp(){
+        return timestamp;
+    }
 
+    public String getLevel(){
+        return level;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public String toString(){
+        return "[" + timestamp + "]" + level + " - " + message;
+    }
 }
 
 
