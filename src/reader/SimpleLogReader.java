@@ -22,7 +22,10 @@ public class SimpleLogReader implements LogReader {
 
             // while the line there is a line
             while ((line = br.readLine()) != null){
-               // split it into parts, to extract the relevant field
+                // remove the square brackets from the timestamp if they exist
+                line = line.replaceAll("[\\[\\]]", "");
+
+                // split it into parts, to extract the relevant field
                 String[] parts = line.split(" ", 3);
 
                 if (parts.length >= 3){
