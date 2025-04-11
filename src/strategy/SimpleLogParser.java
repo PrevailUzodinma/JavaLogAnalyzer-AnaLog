@@ -11,6 +11,7 @@ public class SimpleLogParser implements LogParser {
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     public LogEntry parse(String logLine){
+        String[] parts = logLine.split(" ", 3); // timestamp, level, message
 
     }
 }
