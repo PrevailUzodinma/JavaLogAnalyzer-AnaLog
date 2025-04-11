@@ -9,7 +9,7 @@ import java.util.Map;
 public class CountByLevelLogAnalyzer implements LogAnalyzer{
 
     public void analyze(List<LogEntry> entries){
-        HashMap<String, Integer> levelCounts = new HashMap<>();
+        Map<String, Integer> levelCounts = new HashMap<>();
 
         for (LogEntry entry : entries){
             // ENCAPSULATION IMPLEMENTATION: using the getter method to get the value of the private variable "level"
