@@ -8,7 +8,9 @@ public class Main {
         LogReader reader = new SimpleLogReader(new SimpleLogParser());
         var entries = reader.readLogs("logs/sample.log");
 
-        LogAnalyzer analyzer = new KeywordSearchAnalyzer("user");
-        analyzer.analyze(entries);
+        LogAnalyzer dayAnalyzer = new TimeBasedAnalyzer("MM", "month");
+        LogAnalyzer hourAnalyzer = new TimeBasedAnalyzer("HH", "hour");
+        dayAnalyzer.analyze(entries);
+        hourAnalyzer.analyze(entries);
     }
 }

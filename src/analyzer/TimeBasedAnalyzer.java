@@ -27,8 +27,8 @@ public class TimeBasedAnalyzer implements LogAnalyzer {
             groupedLogs.put(timeKey, groupedLogs.getOrDefault(timeKey, 0) + 1);
         }
 
-        for (Map.Entry<String, Integer> e : groupedLogs.entrySet()) {
-            System.out.println(e.getKey() + ": " + e.getValue() + " logs");
+        for (Map.Entry<String, Integer> entry : groupedLogs.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue() + " logs");
         }
     }
 }
