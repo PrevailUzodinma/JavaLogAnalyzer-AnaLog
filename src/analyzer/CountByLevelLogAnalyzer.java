@@ -1,13 +1,12 @@
 package analyzer;
 
-
 import model.LogEntry;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CountByLevelAnalyzer implements LogAnalyzer{
+public class CountByLevelLogAnalyzer implements LogAnalyzer{
 
     public void analyze(List<LogEntry> entries){
         HashMap<String, Integer> levelCounts = new HashMap<>();

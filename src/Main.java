@@ -1,23 +1,14 @@
 import reader.*;
 import strategy.*;
-import model.LogEntry;
+import analyzer.*;
 
-import java.util.List;
-
-public class Main{
+public class Main {
     public static void main(String[] args) {
+        // objects should always be of the interface type, not the concrete implementation itself
+        LogReader reader = new SimpleLogReader(new SimpleLogParser());
+        var entries = reader.readLogs("logs/sample.log");
 
-        // define our file path
-        String filePath = "logs/sample.log";
-
-        // define our reader object and choose simple reader, also indicate which parser to use
-        SimpleLogReader logReader = new SimpleLogReader(new SimpleLogParser());
-
-        // define where our Log entries will be placed
-        List<LogEntry> logEntries = logReader.readLogs(filePath);
-
-            for (LogEntry entry : logEntries) {
-                System.out.println(entry);
-            }
+        LogAnalyzer analyzer = new CountByLevelLogAnalyzer();
+        analyzer.analyze(entries);
     }
 }
