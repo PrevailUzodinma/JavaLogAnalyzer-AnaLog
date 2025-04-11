@@ -8,7 +8,7 @@ public class Main {
         LogReader reader = new SimpleLogReader(new SimpleLogParser());
         var entries = reader.readLogs("logs/sample.log");
 
-        LogAnalyzer analyzer = new CountByHourLogAnalyzer();
+        LogAnalyzer analyzer = new KeywordSearchAnalyzer("server");
         analyzer.analyze(entries);
     }
 }

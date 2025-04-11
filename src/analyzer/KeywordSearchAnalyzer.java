@@ -2,20 +2,32 @@ package analyzer;
 
 import model.LogEntry;
 import java.util.List;
+import java.util.Locale;
 
 public class KeywordSearchAnalyzer implements LogAnalyzer{
     private final String keyword;
 
     public KeywordSearchAnalyzer(String keyword) {
-        this.keyword = keyword;
+        this.keyword = keyword.toLowerCase(Locale.ROOT);
     }
 
     public void analyze(List<LogEntry> entries) {
-        long count = entries.stream()
-                .filter(entry -> entry.getMessage().contains(keyword))
-                .count();
+        System.out.println("\n🔍 Logs containing keyword: \"" + keyword + "\"");
 
-        // Console the output
-        System.out.printf("\nNumber of logs containing the keyword '%s': %d%n", keyword, count);
+        long matchCount = 0;
+
+        for (LogEntry entry : entries) {
+            String message = entry.getMessage().toLowerCase(Locale.ROOT);
+            if (message.contains(keyword)) {
+                System.out.println(entry); // This will print timestamp + level + message
+                matchCount++;
+            }
+        }
+
+        if (matchCount == 0) {
+            System.out.println("No logs found with the keyword.");
+        } else {
+            System.out.println("\nTotal matches: " + matchCount);
+        }
     }
 }
