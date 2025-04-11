@@ -29,8 +29,10 @@ public class SimpleLogReader {
             String line;
 
             while((line = reader.readLine()) != null) {
+                // feed the line into the LogParser
                 LogEntry entry = parser.parse(line);
                 if (entry != null){
+                    // then add the result into the list of entries
                     entries.add(entry);
                 }
             }

@@ -1,5 +1,5 @@
-import reader.LogReader;
-import reader.SimpleLogReader;
+import reader.*;
+import strategy.*;
 import model.LogEntry;
 
 import java.util.List;
@@ -10,16 +10,14 @@ public class Main{
         // define our file path
         String filePath = "logs/sample.log";
 
-        // define our reader object and choose simple reader
-        LogReader reader = new SimpleLogReader();
+        // define our reader object and choose simple reader, also indicate which parser to use
+        SimpleLogReader logReader = new SimpleLogReader(new SimpleLogParser());
 
-        try {
-            List<LogEntry> logs = reader.readLogs(filePath);
-            for (LogEntry entry : logs) {
+        // define where our Log entries will be placed
+        List<LogEntry> logEntries = logReader.readLogs(filePath);
+
+            for (LogEntry entry : logEntries) {
                 System.out.println(entry);
             }
-        } catch (Exception e) {
-            System.out.println("Failed to read logs: " + e.getMessage());
-        }
     }
 }
