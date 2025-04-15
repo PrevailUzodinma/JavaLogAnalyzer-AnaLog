@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CountByLevelLogAnalyzer implements LogAnalyzer {
+public class CountByLevelAnalyzer implements LogAnalyzer {
 
     public void analyze(List<LogEntry> entries){
         Map<String, Integer> levelCounts = new HashMap<>();

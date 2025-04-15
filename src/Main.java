@@ -39,8 +39,8 @@ public class Main {
 
         // Perform the analysis and display results
         Map<?, ?> result;
-        if (analyzer instanceof CountByLevelLogAnalyzer) {
-            ((CountByLevelLogAnalyzer) analyzer).analyze( logs);
+        if (analyzer instanceof CountByLevelAnalyzer) {
+            ((CountByLevelAnalyzer) analyzer).analyze( logs);
         } else if (analyzer instanceof KeywordSearchAnalyzer) {
             ((KeywordSearchAnalyzer) analyzer).analyze(logs); // Keyword is passed dynamically from factory
         } else if (analyzer instanceof TimeBasedAnalyzer) {
