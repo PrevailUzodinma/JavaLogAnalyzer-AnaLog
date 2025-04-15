@@ -12,28 +12,33 @@ public class KeywordSearchAnalyzer implements LogAnalyzer {
     }
 
     public void analyze(List<LogEntry> entries) {
-
         if (entries.isEmpty()) {
             System.out.println("Oops! Sorry, there are no logs in this file to analyze.");
-            return;  // Exit the method if no logs are found
+            return;
         }
 
         System.out.println("\n🔍 Logs containing keyword: \"" + keyword + "\"");
 
-        long matchCount = 0;
+        // Create a new filtered list
+        List<LogEntry> filteredEntries = new java.util.ArrayList<>();
 
         for (LogEntry entry : entries) {
             String message = entry.getMessage().toLowerCase(Locale.ROOT);
             if (message.contains(keyword)) {
-                System.out.println(entry); // This will print timestamp + level + message
-                matchCount++;
+                filteredEntries.add(entry);  // Keep the matching entry
+                System.out.println(entry);   // Print it
             }
         }
 
-        if (matchCount == 0) {
+        if (filteredEntries.isEmpty()) {
             System.out.println("No logs found with the keyword.");
         } else {
-            System.out.println("\nTotal matches: " + matchCount);
+            System.out.println("\nTotal matches: " + filteredEntries.size());
+
+            // Clear original list and add back filtered logs
+            entries.clear();
+            entries.addAll(filteredEntries);
         }
     }
+
 }

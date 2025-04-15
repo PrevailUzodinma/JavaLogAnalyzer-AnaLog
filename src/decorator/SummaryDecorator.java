@@ -15,9 +15,9 @@ public class SummaryDecorator extends AnalyzerDecorator {
 
     @Override
     public void analyze(List<LogEntry> logs) {
-        // First run the original analysis
+        System.out.println("Before analysis, logs size: " + logs.size()); // Debugging
         super.analyze(logs);
-
+        System.out.println("After analysis, logs size: " + logs.size()); // Debugging
         // Then add the summary section
         System.out.println("\n📊 Summary Report:");
         System.out.println("Total logs analyzed: " + logs.size());
