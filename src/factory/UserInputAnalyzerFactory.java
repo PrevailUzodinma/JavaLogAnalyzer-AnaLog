@@ -13,19 +13,19 @@ public class UserInputAnalyzerFactory implements AnalyzerFactory {
     public LogAnalyzer createAnalyzer(String type, Scanner scanner) {
         String pattern = LogConfig.getInstance().getTimestampPattern();
         switch(type.toLowerCase()) {
-            case "level":
+            case "1":
                 return new CountByLevelAnalyzer();
-            case "keyword":
+            case "2":
                 System.out.print("Enter the keyword to search for: ");
                 String keyword = scanner.nextLine(); // Dynamically input keyword
                 return new KeywordSearchAnalyzer(keyword);
-            case "day":
+            case "3":
                 System.out.print("Enter the date (yyyy-MM-dd) for which you want to analyze logs: ");
                 String dayStr = scanner.nextLine();
                 LocalDateTime day = LocalDateTime.parse(dayStr + "T00:00:00");  // Set the time to midnight
-                return new DayBasedAnalyzer("day", day);
+                return new TimeBasedAnalyzer("day", day);
 
-            case "hour":
+            case "4":
                 // Ask user for the specific hour they want to analyze (e.g., yyyy-MM-dd HH)
                 System.out.print("Enter the date and hour (yyyy-MM-dd HH) for which you want to analyze logs: ");
                 String hourStr = scanner.nextLine();
@@ -36,10 +36,10 @@ public class UserInputAnalyzerFactory implements AnalyzerFactory {
                 LocalDateTime hour = LocalDateTime.parse(hourStr, DateTimeFormatter.ofPattern(pattern));
 
                 // Return TimeBasedAnalyzer with the parsed date-time
-                return new DayBasedAnalyzer("hour", hour);
+                return new TimeBasedAnalyzer("hour", hour);
 
 
-            case "timerange":
+            case "5":
                 // Get timestamp pattern from config
                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern(pattern);
 
@@ -55,7 +55,7 @@ public class UserInputAnalyzerFactory implements AnalyzerFactory {
                 return new TimeRangeAnalyzer(startDate, endDate);
 
             default:
-                throw new IllegalArgumentException("Unknown analyzer type: " + type);
+                return null;
         }
     }
 }

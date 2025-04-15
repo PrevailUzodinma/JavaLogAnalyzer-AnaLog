@@ -24,7 +24,22 @@ public class TimeRangeAnalyzer implements LogAnalyzer {
     public void analyze(List<LogEntry> entries) {
         System.out.printf("\n📅 Logs between %s and %s:\n", start.format(formatter), end.format(formatter));
 
-        boolean found = false; // Track if logs fall in this time range
+        int totalLogsInRange = 0; // Track the number of logs within the time range
+
+        // First, iterate over all entries to count how many fall within the time range
+        for (LogEntry entry : entries) {
+            LocalDateTime timestamp = entry.getTimestamp(); // Encapsulation implementation: getTimestamp is a getter method
+            if (!timestamp.isBefore(start) && !timestamp.isAfter(end)) {
+                totalLogsInRange++; // Increase count for logs that fall within the range
+            }
+        }
+
+        // Display the total log count for the time range
+        System.out.println("Total logs in the specified time range: " + totalLogsInRange);
+
+        // Now display the actual logs that match the time range
+        boolean found = false; // To track if we display any logs
+
         for (LogEntry entry : entries) {
             LocalDateTime timestamp = entry.getTimestamp(); // Encapsulation implementation: getTimestamp is a getter method
             if (!timestamp.isBefore(start) && !timestamp.isAfter(end)) {
@@ -34,7 +49,7 @@ public class TimeRangeAnalyzer implements LogAnalyzer {
         }
 
         if (!found) {
-            System.out.println("No logs found in the specified time range.");
+            System.out.println("🔍 No logs found in the specified time range.");
         }
     }
 }
