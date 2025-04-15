@@ -4,7 +4,7 @@ import factory.UserInputAnalyzerFactory;
 import reader.*;
 import singleton.LogConfig;
 import model.LogEntry;
-import parser.SimpleLogParser;
+import parser.*;
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,6 +18,11 @@ public class Main {
         // Read logs using configured file path
         LogReader logReader = new SimpleLogReader(new SimpleLogParser());
         List<LogEntry> logs = logReader.readLogs(filePath);
+
+        // Exit if the file is empty/wrong filePath/cannot be read due to file permissions.
+        if (logs.isEmpty()) {
+            return;
+        }
 
         // Create an instance of the UserInputAnalyzerFactory using AnalyzerFactory Interface
         AnalyzerFactory analyzerFactory = new UserInputAnalyzerFactory();

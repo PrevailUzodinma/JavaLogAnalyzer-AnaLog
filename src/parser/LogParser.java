@@ -1,4 +1,4 @@
-package strategy;
+package parser;
 
 import model.LogEntry;
 

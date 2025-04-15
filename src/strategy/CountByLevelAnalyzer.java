@@ -13,6 +13,11 @@ public class CountByLevelAnalyzer implements LogAnalyzer {
         Map<String, Integer> levelCounts = new HashMap<>();
         Map<String, List<LogEntry>> logsByLevel = new HashMap<>(); // A map to store logs by level
 
+        if (entries.isEmpty()) {
+            System.out.println("Oops! Sorry, there are no logs in this file to analyze.");
+            return;  // Exit the method if no logs are found
+        }
+
         for (LogEntry entry : entries) {
             // ENCAPSULATION IMPLEMENTATION: using the getter method to get the value of the private variable "level"
             String level = entry.getLevel();
@@ -30,7 +35,6 @@ public class CountByLevelAnalyzer implements LogAnalyzer {
         // For every entry in the hashmap, print the count of logs by level
         for (Map.Entry<String, Integer> entry : levelCounts.entrySet()) {
             System.out.println("\n" + entry.getKey() + ": " + entry.getValue() + " logs");
-            System.out.println("Total count: " + entry.getValue() + " logs");
 
             // Print the logs for this level
             System.out.println("\nLogs for level " + entry.getKey() + ":");

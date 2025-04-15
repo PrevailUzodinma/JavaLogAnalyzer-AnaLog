@@ -26,6 +26,11 @@ public class TimeBasedAnalyzer implements LogAnalyzer {
 
     @Override
     public void analyze(List<LogEntry> entries) {
+        if (entries.isEmpty()) {
+            System.out.println("Oops! Sorry, there are no logs in this file to analyze.");
+            return;  // Exit the method if no logs are found
+        }
+
         System.out.println("\n🕒 Logs grouped by " + label + ":");
 
         Map<String, Integer> groupedLogs = new HashMap<>();

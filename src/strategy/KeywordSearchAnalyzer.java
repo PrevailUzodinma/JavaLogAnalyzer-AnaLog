@@ -12,6 +12,12 @@ public class KeywordSearchAnalyzer implements LogAnalyzer {
     }
 
     public void analyze(List<LogEntry> entries) {
+
+        if (entries.isEmpty()) {
+            System.out.println("Oops! Sorry, there are no logs in this file to analyze.");
+            return;  // Exit the method if no logs are found
+        }
+
         System.out.println("\n🔍 Logs containing keyword: \"" + keyword + "\"");
 
         long matchCount = 0;

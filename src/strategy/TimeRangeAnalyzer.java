@@ -22,6 +22,11 @@ public class TimeRangeAnalyzer implements LogAnalyzer {
     }
 
     public void analyze(List<LogEntry> entries) {
+        if (entries.isEmpty()) {
+            System.out.println("Oops! Sorry, there are no logs in this file to analyze.");
+            return;  // Exit the method if no logs are found
+        }
+
         System.out.printf("\n📅 Logs between %s and %s:\n", start.format(formatter), end.format(formatter));
 
         int totalLogsInRange = 0; // Track the number of logs within the time range
