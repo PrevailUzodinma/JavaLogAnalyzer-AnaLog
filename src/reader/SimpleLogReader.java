@@ -1,6 +1,7 @@
 package reader;
 
 import model.LogEntry;
+import singleton.LogConfig;
 import strategy.LogParser;
 
 import java.io.BufferedReader;
@@ -13,7 +14,6 @@ import java.util.List;
 
 public class SimpleLogReader implements LogReader {
     private final LogParser parser;
-
     // create a constructor, so the parser is initialized when the reader is called
     public SimpleLogReader(LogParser parser){
         this.parser = parser;
@@ -39,4 +39,11 @@ public class SimpleLogReader implements LogReader {
         }
         return entries;
     }
+
+    // New method to use LogConfig singleton and read logs dynamically
+    public List<LogEntry> readLogs() {
+        String pathFromConfig = LogConfig.getInstance().getLogFilePath();
+        return readLogs(pathFromConfig);  // Call the original readLogs method
+    }
 }
+

@@ -3,10 +3,3 @@
 [2025-04-01 10:15:45] WARN Disk space running low
 [2025-04-01 09:17:30] INFO File uploaded successfully by user: alice
 [2025-04-01 10:20:00] ERROR NullPointerException at LogAnalyzer.java:45
-2025-04-11 09:00:00 - System startup
-2025-04-11 09:00:30 - Starting web server on port 80
-2025-04-11 09:00:45 - Database connection established
-2025-04-11 09:30:00 - Task scheduler started
-2025-04-11 10:00:00 - CPU usage: 75%
-2025-04-11 10:30:00 - Memory usage: 60%
-2025-04-11 11:00:00 - Disk space usage: 90%

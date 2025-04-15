@@ -1,6 +1,6 @@
 package factory;
 
-import analyzer.LogAnalyzer;
+import strategy.LogAnalyzer;
 import model.LogEntry;
 
 import java.util.List;

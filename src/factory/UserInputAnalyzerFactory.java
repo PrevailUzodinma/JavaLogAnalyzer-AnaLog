@@ -1,6 +1,6 @@
 package factory;
 
-import analyzer.*;
+import strategy.*;
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
