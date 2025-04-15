@@ -1,7 +1,8 @@
-package strategy;
+package parser;
 
 import model.LogEntry;
 import reader.LogReader;
+import strategy.LogParser;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

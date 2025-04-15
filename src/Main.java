@@ -3,7 +3,7 @@ import factory.UserInputAnalyzerFactory;
 import reader.*;
 import singleton.LogConfig;
 import model.LogEntry;
-import strategy.SimpleLogParser;
+import parser.SimpleLogParser;
 
 import java.util.List;
 import java.util.Map;
