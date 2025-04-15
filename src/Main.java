@@ -7,6 +7,7 @@ import model.LogEntry;
 import parser.*;
 import java.util.List;
 import java.util.Scanner;
+import decorator.SummaryDecorator;
 
 public class Main {
     public static void main(String[] args) {
@@ -32,7 +33,7 @@ public class Main {
         String choice;
         while (true) {
             // Display the menu
-            System.out.println("\nWelcome to the AnaLog - The Java Log Analyzer! (or type 'exit' to quit))");
+            System.out.println("\n\nWelcome to the AnaLog - The Java Log Analyzer! (or type 'exit' to quit))");
             System.out.println("\nChoose an analysis type:");
             System.out.println("1. Level Analysis");
             System.out.println("2. Keyword Search Analysis");
@@ -51,7 +52,10 @@ public class Main {
             }
 
             // USING FACTORY DESIGN PATTERN: create the appropriate analyzer based on the user's choice and pass scanner for dynamic input
-            LogAnalyzer analyzer = analyzerFactory.createAnalyzer(choice, scanner);
+            LogAnalyzer baseAnalyzer = analyzerFactory.createAnalyzer(choice, scanner);
+
+            // Apply decorator
+            LogAnalyzer analyzer = new SummaryDecorator(baseAnalyzer);
 
             // Perform the analysis and display results
             if (analyzer != null) {
