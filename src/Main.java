@@ -22,6 +22,7 @@ public class Main {
 
         // Exit if the file is empty/wrong filePath/cannot be read due to file permissions.
         if (logs.isEmpty()) {
+            System.out.println("Error: The log file is empty or could not be read.");
             return;
         }
 
@@ -51,15 +52,27 @@ public class Main {
                 break;
             }
 
+            // Validate input choice
+            if (!choice.matches("[1-5]")) {
+                System.out.println("Invalid choice. Please select a valid option.");
+                continue; // Ask again
+            }
+
             // USING FACTORY DESIGN PATTERN: create the appropriate analyzer based on the user's choice and pass scanner for dynamic input
             LogAnalyzer baseAnalyzer = analyzerFactory.createAnalyzer(choice, scanner);
 
-            // Apply decorator
-            LogAnalyzer analyzer = new SummaryDecorator(baseAnalyzer);
+            // Ask if the user wants the summary
+            System.out.print("Do you want to see a summary report after the analysis is done? (y/n): ");
+            String showSummary = scanner.nextLine().toLowerCase();
+
+            // If user wants summary, wrap the analyzer with the SummaryDecorator
+            if (showSummary.equals("y")) {
+                baseAnalyzer = new SummaryDecorator(baseAnalyzer);
+            }
 
             // Perform the analysis and display results
-            if (analyzer != null) {
-                analyzer.analyze(logs);
+            if (baseAnalyzer != null) {
+                baseAnalyzer.analyze(logs);
             } else {
                 System.out.println("Invalid analyzer type.");
             }

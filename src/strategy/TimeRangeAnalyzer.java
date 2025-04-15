@@ -1,60 +1,58 @@
 package strategy;
 
 import model.LogEntry;
-import singleton.LogConfig; // Import LogConfig to get the timestamp pattern
+import singleton.LogConfig;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
+import java.util.*;
 
 public class TimeRangeAnalyzer implements LogAnalyzer {
 
     private final LocalDateTime start;
     private final LocalDateTime end;
-    private final DateTimeFormatter formatter; // Add DateTimeFormatter for pattern
+    private final DateTimeFormatter formatter;
 
     public TimeRangeAnalyzer(LocalDateTime start, LocalDateTime end) {
-        // Get timestamp pattern from LogConfig singleton
         String pattern = LogConfig.getInstance().getTimestampPattern();
-        this.formatter = DateTimeFormatter.ofPattern(pattern); // Initialize the formatter with the pattern
+        this.formatter = DateTimeFormatter.ofPattern(pattern);
         this.start = start;
         this.end = end;
     }
 
-    public void analyze(List<LogEntry> entries) {
+    @Override
+    public List<LogEntry> analyze(List<LogEntry> entries) {
         if (entries.isEmpty()) {
             System.out.println("Oops! Sorry, there are no logs in this file to analyze.");
-            return;  // Exit the method if no logs are found
+            return Collections.emptyList();
         }
 
         System.out.printf("\n📅 Logs between %s and %s:\n", start.format(formatter), end.format(formatter));
 
-        int totalLogsInRange = 0; // Track the number of logs within the time range
+        List<LogEntry> filtered = new ArrayList<>();
+        int totalLogsInRange = 0;
 
-        // First, iterate over all entries to count how many fall within the time range
         for (LogEntry entry : entries) {
-            LocalDateTime timestamp = entry.getTimestamp(); // Encapsulation implementation: getTimestamp is a getter method
+            LocalDateTime timestamp = entry.getTimestamp();
             if (!timestamp.isBefore(start) && !timestamp.isAfter(end)) {
-                totalLogsInRange++; // Increase count for logs that fall within the range
+                totalLogsInRange++;
+                filtered.add(entry);
             }
         }
 
-        // Display the total log count for the time range
         System.out.println("Total logs in the specified time range: " + totalLogsInRange);
 
-        // Now display the actual logs that match the time range
-        boolean found = false; // To track if we display any logs
+        boolean found = false;
 
-        for (LogEntry entry : entries) {
-            LocalDateTime timestamp = entry.getTimestamp(); // Encapsulation implementation: getTimestamp is a getter method
-            if (!timestamp.isBefore(start) && !timestamp.isAfter(end)) {
-                System.out.println(entry); // Print the log entry
-                found = true;
-            }
+        for (LogEntry entry : filtered) {
+            System.out.println(entry);
+            found = true;
         }
 
         if (!found) {
             System.out.println("🔍 No logs found in the specified time range.");
         }
+
+        return filtered;
     }
 }

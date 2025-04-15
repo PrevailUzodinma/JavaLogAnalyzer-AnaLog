@@ -13,7 +13,13 @@ public abstract class AnalyzerDecorator implements LogAnalyzer {
     }
 
     @Override
-    public void analyze(List<LogEntry> logs) {
-        wrappedAnalyzer.analyze(logs);
+    public List<LogEntry> analyze(List<LogEntry> logs) {
+        // Call the analyze method of the wrapped analyzer and get the filtered logs
+        List<LogEntry> filteredLogs = wrappedAnalyzer.analyze(logs);
+
+        // Optionally add any additional behavior or summary logic here
+        // For example, we could add a summary feature (based on user input or context)
+
+        return filteredLogs;
     }
 }

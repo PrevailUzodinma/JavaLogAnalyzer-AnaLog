@@ -2,21 +2,19 @@ package strategy;
 
 import model.LogEntry;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class CountByLevelAnalyzer implements LogAnalyzer {
 
-    public void analyze(List<LogEntry> entries) {
-        Map<String, Integer> levelCounts = new HashMap<>();
-        Map<String, List<LogEntry>> logsByLevel = new HashMap<>();
-
+    @Override
+    public List<LogEntry> analyze(List<LogEntry> entries) {
         if (entries.isEmpty()) {
             System.out.println("Oops! Sorry, there are no logs in this file to analyze.");
-            return;
+            return Collections.emptyList();
         }
+
+        Map<String, Integer> levelCounts = new HashMap<>();
+        Map<String, List<LogEntry>> logsByLevel = new HashMap<>();
 
         for (LogEntry entry : entries) {
             String level = entry.getLevel();
@@ -25,22 +23,21 @@ public class CountByLevelAnalyzer implements LogAnalyzer {
         }
 
         System.out.println("\n🔍 Log Level Counts:");
+        List<LogEntry> filtered = new ArrayList<>();
 
         for (Map.Entry<String, Integer> entry : levelCounts.entrySet()) {
-            System.out.println("\n" + entry.getKey() + ": " + entry.getValue() + " logs");
-            System.out.println("\nLogs for level " + entry.getKey() + ":");
-            for (LogEntry log : logsByLevel.get(entry.getKey())) {
+            String level = entry.getKey();
+            int count = entry.getValue();
+            List<LogEntry> logs = logsByLevel.get(level);
+
+            System.out.println("\n" + level + ": " + count + " logs");
+            System.out.println("Logs for level " + level + ":");
+            for (LogEntry log : logs) {
                 System.out.println(log);
+                filtered.add(log);
             }
         }
 
-        // ✅ Update entries to reflect only what was analyzed (this may be redundant here
-        // because we analyze all, but this ensures consistency)
-        List<LogEntry> filtered = new ArrayList<>();
-        for (List<LogEntry> logs : logsByLevel.values()) {
-            filtered.addAll(logs);
-        }
-        entries.clear();
-        entries.addAll(filtered);
+        return filtered;
     }
 }

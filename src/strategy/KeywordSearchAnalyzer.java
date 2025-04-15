@@ -1,6 +1,7 @@
 package strategy;
 
 import model.LogEntry;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -11,34 +12,27 @@ public class KeywordSearchAnalyzer implements LogAnalyzer {
         this.keyword = keyword.toLowerCase(Locale.ROOT);
     }
 
-    public void analyze(List<LogEntry> entries) {
-        if (entries.isEmpty()) {
-            System.out.println("Oops! Sorry, there are no logs in this file to analyze.");
-            return;
-        }
-
-        System.out.println("\n🔍 Logs containing keyword: \"" + keyword + "\"");
-
-        // Create a new filtered list
-        List<LogEntry> filteredEntries = new java.util.ArrayList<>();
+    @Override
+    public List<LogEntry> analyze(List<LogEntry> entries) {
+        List<LogEntry> filtered = new ArrayList<>();
 
         for (LogEntry entry : entries) {
             String message = entry.getMessage().toLowerCase(Locale.ROOT);
             if (message.contains(keyword)) {
-                filteredEntries.add(entry);  // Keep the matching entry
-                System.out.println(entry);   // Print it
+                filtered.add(entry);
             }
         }
 
-        if (filteredEntries.isEmpty()) {
-            System.out.println("No logs found with the keyword.");
+        if (filtered.isEmpty()) {
+            System.out.println("No logs found with the keyword: " + keyword);
         } else {
-            System.out.println("\nTotal matches: " + filteredEntries.size());
-
-            // Clear original list and add back filtered logs
-            entries.clear();
-            entries.addAll(filteredEntries);
+            System.out.println("\n🔍 Logs containing keyword: \"" + keyword + "\"");
+            for (LogEntry entry : filtered) {
+                System.out.println(entry);
+            }
+            System.out.println("\nTotal matches: " + filtered.size());
         }
-    }
 
+        return filtered;
+    }
 }
