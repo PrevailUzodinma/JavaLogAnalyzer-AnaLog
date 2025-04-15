@@ -74,7 +74,7 @@ public class Main {
             if (baseAnalyzer != null) {
                 baseAnalyzer.analyze(logs);
             } else {
-                System.out.println("Invalid analyzer type.");
+                System.out.println("Invalid analyzer type, please select based on the options above.");
             }
         }
 
