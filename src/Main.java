@@ -60,7 +60,7 @@ public class Main {
             // Validate input choice
             if (!choice.matches("[1-5]")) {
                 System.out.println("Invalid choice. Please select a valid option.");
-                continue; // Ask again
+                continue; // Ask User to input choice again
             }
 
             // USING FACTORY DESIGN PATTERN: create the appropriate analyzer based on the user's choice and pass scanner for dynamic input
