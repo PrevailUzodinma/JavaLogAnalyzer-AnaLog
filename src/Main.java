@@ -1,6 +1,5 @@
-import factory.AnalyzerFactory;
+import factory.*;
 import strategy.*;
-import factory.UserInputAnalyzerFactory;
 import reader.*;
 import singleton.LogConfig;
 import model.LogEntry;
@@ -65,7 +64,7 @@ public class Main {
             System.out.print("Do you want to see a summary report after the analysis is done? (y/n): ");
             String showSummary = scanner.nextLine().toLowerCase();
 
-            // If user wants summary, wrap the analyzer with the SummaryDecorator
+            // If user wants summary, wrap the base analyzer with the SummaryDecorator
             if (showSummary.equals("y")) {
                 baseAnalyzer = new SummaryDecorator(baseAnalyzer);
             }

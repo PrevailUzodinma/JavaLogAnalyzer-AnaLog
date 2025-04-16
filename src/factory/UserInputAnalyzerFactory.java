@@ -4,6 +4,7 @@ import singleton.LogConfig;
 import strategy.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class UserInputAnalyzerFactory implements AnalyzerFactory {
@@ -12,50 +13,76 @@ public class UserInputAnalyzerFactory implements AnalyzerFactory {
     @Override
     public LogAnalyzer createAnalyzer(String type, Scanner scanner) {
         String pattern = LogConfig.getInstance().getTimestampPattern();
-        switch(type.toLowerCase()) {
+        switch (type.toLowerCase()) {
             case "1":
                 return new CountByLevelAnalyzer();
+
             case "2":
                 System.out.print("Enter the keyword to search for: ");
                 String keyword = scanner.nextLine(); // Dynamically input keyword
                 return new KeywordSearchAnalyzer(keyword);
+
             case "3":
+                return createDayBasedAnalyzer(scanner); // Day-based analysis
+
+            case "4":
+                return createHourBasedAnalyzer(scanner); // Hour-based analysis
+
+            case "5":
+                return createTimeRangeAnalyzer(scanner); // Time range analysis
+
+            default:
+                return null;
+        }
+    }
+
+    // Method for day-based analysis with input validation
+    private LogAnalyzer createDayBasedAnalyzer(Scanner scanner) {
+        while (true) {
+            try {
                 System.out.print("Enter the date (yyyy-MM-dd) for which you want to analyze logs: ");
                 String dayStr = scanner.nextLine();
                 LocalDateTime day = LocalDateTime.parse(dayStr + "T00:00:00");  // Set the time to midnight
                 return new TimeBasedAnalyzer("day", day);
+            } catch (DateTimeParseException e) {
+                System.out.println("Invalid date format. Please enter the date in the correct format (yyyy-MM-dd).");
+            }
+        }
+    }
 
-            case "4":
-                // Ask user for the specific hour they want to analyze (e.g., yyyy-MM-dd HH)
+    // Method for hour-based analysis with input validation
+    private LogAnalyzer createHourBasedAnalyzer(Scanner scanner) {
+        String pattern = LogConfig.getInstance().getTimestampPattern();
+        while (true) {
+            try {
                 System.out.print("Enter the date and hour (yyyy-MM-dd HH) for which you want to analyze logs: ");
                 String hourStr = scanner.nextLine();
-
-                // Retrieve the timestamp pattern from LogConfig singleton
-
-                // Append ':00:00' to the input to represent minutes and seconds
                 LocalDateTime hour = LocalDateTime.parse(hourStr, DateTimeFormatter.ofPattern(pattern));
-
-                // Return TimeBasedAnalyzer with the parsed date-time
                 return new TimeBasedAnalyzer("hour", hour);
+            } catch (DateTimeParseException e) {
+                System.out.println("Invalid date-time format. Please enter the date and hour in the correct format (yyyy-MM-dd HH).");
+            }
+        }
+    }
 
-
-            case "5":
-                // Get timestamp pattern from config
-                DateTimeFormatter dtf = DateTimeFormatter.ofPattern(pattern);
-
+    // Method for time-range analysis with input validation
+    private LogAnalyzer createTimeRangeAnalyzer(Scanner scanner) {
+        String pattern = LogConfig.getInstance().getTimestampPattern();
+        while (true) {
+            try {
                 // Get start and end date and time from user, using the pattern from config
                 System.out.print("Enter the start date and time (" + pattern + "): ");
                 String startDateStr = scanner.nextLine();
-                LocalDateTime startDate = LocalDateTime.parse(startDateStr, dtf); // Parse using config pattern
+                LocalDateTime startDate = LocalDateTime.parse(startDateStr, DateTimeFormatter.ofPattern(pattern));
 
                 System.out.print("Enter the end date and time (" + pattern + "): ");
                 String endDateStr = scanner.nextLine();
-                LocalDateTime endDate = LocalDateTime.parse(endDateStr, dtf); // Parse using config pattern
+                LocalDateTime endDate = LocalDateTime.parse(endDateStr, DateTimeFormatter.ofPattern(pattern));
 
                 return new TimeRangeAnalyzer(startDate, endDate);
-
-            default:
-                return null;
+            } catch (DateTimeParseException e) {
+                System.out.println("Invalid date-time format. Please enter the start and end dates in the correct format (" + pattern + ").");
+            }
         }
     }
 }
