@@ -1,4 +1,4 @@
-package model;
+package com.PrevailUzodinma.model;
 
 import java.time.LocalDateTime;
 

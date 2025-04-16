@@ -1,6 +1,6 @@
-package strategy;
+package com.PrevailUzodinma.strategy;
 
-import model.LogEntry;
+import com.PrevailUzodinma.model.LogEntry;
 
 import java.util.*;
 
@@ -22,7 +22,7 @@ public class CountByLevelAnalyzer implements LogAnalyzer {
             logsByLevel.computeIfAbsent(level, k -> new ArrayList<>()).add(entry);
         }
 
-        System.out.println("\n🔍 Log Level Counts:");
+        System.out.println("\nLog Level Counts:");
         List<LogEntry> filtered = new ArrayList<>();
 
         for (Map.Entry<String, Integer> entry : levelCounts.entrySet()) {

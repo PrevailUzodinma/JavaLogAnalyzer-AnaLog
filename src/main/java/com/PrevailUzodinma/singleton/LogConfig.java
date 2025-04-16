@@ -1,6 +1,6 @@
-package singleton;
+package com.PrevailUzodinma.singleton;
 
-import model.LogEntry;
+import com.PrevailUzodinma.model.LogEntry;
 
 import java.util.List;
 

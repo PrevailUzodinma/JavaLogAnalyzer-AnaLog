@@ -1,6 +1,6 @@
-package strategy;
+package com.PrevailUzodinma.strategy;
 
-import model.LogEntry;
+import com.PrevailUzodinma.model.LogEntry;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -26,7 +26,7 @@ public class KeywordSearchAnalyzer implements LogAnalyzer {
         if (filtered.isEmpty()) {
             System.out.println("No logs found with the keyword: " + keyword);
         } else {
-            System.out.println("\n🔍 Logs containing keyword: \"" + keyword + "\"");
+            System.out.println("\nLogs containing keyword: \"" + keyword + "\"");
             for (LogEntry entry : filtered) {
                 System.out.println(entry);
             }

@@ -1,6 +1,6 @@
-package strategy;
+package com.PrevailUzodinma.strategy;
 
-import model.LogEntry;
+import com.PrevailUzodinma.model.LogEntry;
 import java.util.List;
 
 public interface LogAnalyzer {

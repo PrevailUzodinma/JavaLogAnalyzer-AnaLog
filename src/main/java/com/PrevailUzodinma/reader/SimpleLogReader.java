@@ -1,8 +1,8 @@
-package reader;
+package com.PrevailUzodinma.reader;
 
-import model.LogEntry;
-import singleton.LogConfig;
-import parser.LogParser;
+import com.PrevailUzodinma.model.LogEntry;
+import com.PrevailUzodinma.singleton.LogConfig;
+import com.PrevailUzodinma.parser.LogParser;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -20,6 +20,7 @@ public class SimpleLogReader implements LogReader {
     public SimpleLogReader(LogParser parser){
         this.parser = parser;
     }
+
 
     public List<LogEntry> readLogs(String filePath){
         // Make an arraylist to dynamically store all the entries on log file as they are parsed

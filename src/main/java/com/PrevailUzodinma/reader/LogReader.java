@@ -1,6 +1,6 @@
-package reader;
+package com.PrevailUzodinma.reader;
 
-import model.LogEntry;
+import com.PrevailUzodinma.model.LogEntry;
 import java.io.IOException;
 import java.util.List;
 

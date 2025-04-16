@@ -1,7 +1,7 @@
-package factory;
+package com.PrevailUzodinma.factory;
 
-import strategy.LogAnalyzer;
-import model.LogEntry;
+import com.PrevailUzodinma.strategy.LogAnalyzer;
+import com.PrevailUzodinma.model.LogEntry;
 
 import java.util.List;
 import java.util.Scanner;

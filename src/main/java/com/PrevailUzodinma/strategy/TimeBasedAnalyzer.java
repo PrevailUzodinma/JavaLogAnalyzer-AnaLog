@@ -1,7 +1,7 @@
-package strategy;
+package com.PrevailUzodinma.strategy;
 
-import model.LogEntry;
-import singleton.LogConfig;
+import com.PrevailUzodinma.model.LogEntry;
+import com.PrevailUzodinma.singleton.LogConfig;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -27,7 +27,7 @@ public class TimeBasedAnalyzer implements LogAnalyzer {
             return Collections.emptyList();
         }
 
-        System.out.println("\n🕒 Logs grouped by " + label + ":");
+        System.out.println("\nLogs grouped by " + label + ":");
 
         Map<String, Integer> groupedLogs = new HashMap<>();
         Map<String, List<LogEntry>> logsByTime = new HashMap<>();
@@ -58,7 +58,7 @@ public class TimeBasedAnalyzer implements LogAnalyzer {
         }
 
         if (!foundLogs) {
-            System.out.println("🔍 No logs on this " + label + ": " + targetDate);
+            System.out.println("No logs on this " + label + ": " + targetDate);
         } else {
             int totalLogs = groupedLogs.values().stream().mapToInt(Integer::intValue).sum();
             System.out.println("Total logs for " + label + ": " + totalLogs);

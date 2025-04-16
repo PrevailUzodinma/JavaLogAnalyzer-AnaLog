@@ -1,7 +1,7 @@
-package decorator;
+package com.PrevailUzodinma.decorator;
 
-import model.LogEntry;
-import strategy.LogAnalyzer;
+import com.PrevailUzodinma.model.LogEntry;
+import com.PrevailUzodinma.strategy.LogAnalyzer;
 
 import java.time.LocalDateTime;
 import java.util.*;
@@ -19,7 +19,7 @@ public class SummaryDecorator extends AnalyzerDecorator {
         List<LogEntry> filteredLogs = wrappedAnalyzer.analyze(logs);
 
         // Then, add the summary section
-        System.out.println("\n📊 Summary Report:");
+        System.out.println("\nSummary Report:");
         System.out.println("Total logs analyzed: " + filteredLogs.size());
 
         // Unique log levels

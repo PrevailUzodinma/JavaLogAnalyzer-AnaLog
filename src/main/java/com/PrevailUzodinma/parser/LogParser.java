@@ -1,6 +1,6 @@
-package parser;
+package com.PrevailUzodinma.parser;
 
-import model.LogEntry;
+import com.PrevailUzodinma.model.LogEntry;
 
 public interface LogParser {
     LogEntry parse(String logLine);

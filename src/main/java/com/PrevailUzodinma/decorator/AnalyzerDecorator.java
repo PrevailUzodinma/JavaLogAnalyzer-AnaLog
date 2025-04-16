@@ -1,7 +1,7 @@
-package decorator;
+package com.PrevailUzodinma.decorator;
 
-import model.LogEntry;
-import strategy.LogAnalyzer;
+import com.PrevailUzodinma.model.LogEntry;
+import com.PrevailUzodinma.strategy.LogAnalyzer;
 
 import java.util.List;
 

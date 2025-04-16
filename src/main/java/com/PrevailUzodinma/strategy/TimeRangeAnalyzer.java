@@ -1,7 +1,7 @@
-package strategy;
+package com.PrevailUzodinma.strategy;
 
-import model.LogEntry;
-import singleton.LogConfig;
+import com.PrevailUzodinma.model.LogEntry;
+import com.PrevailUzodinma.singleton.LogConfig;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -27,7 +27,7 @@ public class TimeRangeAnalyzer implements LogAnalyzer {
             return Collections.emptyList();
         }
 
-        System.out.printf("\n📅 Logs between %s and %s:\n", start.format(formatter), end.format(formatter));
+        System.out.printf("\nLogs between %s and %s:\n", start.format(formatter), end.format(formatter));
 
         List<LogEntry> filtered = new ArrayList<>();
         int totalLogsInRange = 0;
@@ -50,7 +50,7 @@ public class TimeRangeAnalyzer implements LogAnalyzer {
         }
 
         if (!found) {
-            System.out.println("🔍 No logs found in the specified time range.");
+            System.out.println("No logs found in the specified time range.");
         }
 
         return filtered;

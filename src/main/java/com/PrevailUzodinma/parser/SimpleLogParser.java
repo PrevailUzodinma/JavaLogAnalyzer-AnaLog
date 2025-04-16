@@ -1,7 +1,7 @@
-package parser;
+package com.PrevailUzodinma.parser;
 
-import model.LogEntry;
-import singleton.LogConfig;
+import com.PrevailUzodinma.model.LogEntry;
+import com.PrevailUzodinma.singleton.LogConfig;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

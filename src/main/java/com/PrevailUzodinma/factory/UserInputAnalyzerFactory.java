@@ -1,7 +1,7 @@
-package factory;
+package com.PrevailUzodinma.factory;
 
-import singleton.LogConfig;
-import strategy.*;
+import com.PrevailUzodinma.singleton.LogConfig;
+import com.PrevailUzodinma.strategy.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;

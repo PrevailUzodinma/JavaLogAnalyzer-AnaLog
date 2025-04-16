@@ -1,12 +1,14 @@
-import factory.*;
-import strategy.*;
-import reader.*;
-import singleton.LogConfig;
-import model.LogEntry;
-import parser.*;
+package com.PrevailUzodinma;
+
+import com.PrevailUzodinma.factory.*;
+import com.PrevailUzodinma.strategy.*;
+import com.PrevailUzodinma.reader.*;
+import com.PrevailUzodinma.singleton.LogConfig;
+import com.PrevailUzodinma.model.LogEntry;
+import com.PrevailUzodinma.parser.*;
 import java.util.List;
 import java.util.Scanner;
-import decorator.SummaryDecorator;
+import com.PrevailUzodinma.decorator.SummaryDecorator;
 
 public class Main {
     public static void main(String[] args) {
