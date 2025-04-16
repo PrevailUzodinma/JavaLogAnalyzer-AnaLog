@@ -8,4 +8,5 @@ import java.util.Scanner;
 
 public interface AnalyzerFactory {
     LogAnalyzer createAnalyzer(String type, Scanner scanner);
+    String getSummaryInput(Scanner scanner);
 }

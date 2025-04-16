@@ -86,7 +86,8 @@ public class UserInputAnalyzerFactory implements AnalyzerFactory {
         }
     }
 
-    // Method to handle the summary input and validation
+    // Method to handle the summary input and validation - to keep the main program clean.
+    // I am moving the logic for user input for summary option and input validation in the factory layer
     public String getSummaryInput(Scanner scanner) {
         String showSummary;
         while (true) {

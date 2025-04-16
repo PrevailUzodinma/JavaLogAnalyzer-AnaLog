@@ -10,10 +10,16 @@ import decorator.SummaryDecorator;
 
 public class Main {
     public static void main(String[] args) {
+        // Get log file path from command-line argument
+        if (args.length == 0) {
+            System.out.println("Please provide the log file path as a command-line argument.");
+            return;
+        }
+        String filePath = args[0];
+
         // Initialize LogManager and load logs - implementing my SINGLETON PATTERN
         LogConfig logManager = LogConfig.getInstance();
-        logManager.setLogFilePath("logs/sample.log");
-        String filePath = logManager.getLogFilePath();
+        logManager.setLogFilePath(filePath);
 
         // Read logs using configured file path
         LogReader logReader = new SimpleLogReader(new SimpleLogParser());
@@ -60,9 +66,8 @@ public class Main {
             // USING FACTORY DESIGN PATTERN: create the appropriate analyzer based on the user's choice and pass scanner for dynamic input
             LogAnalyzer baseAnalyzer = analyzerFactory.createAnalyzer(choice, scanner);
 
-            // Ask if the user wants the summary
-            System.out.print("Do you want to see a summary report after the analysis is done? (y/n): ");
-            String showSummary = scanner.nextLine().toLowerCase();
+            // Ask for summary input and validate
+            String showSummary = analyzerFactory.getSummaryInput(scanner);
 
             // If user wants summary, wrap the base analyzer with the SummaryDecorator
             if (showSummary.equals("y")) {
