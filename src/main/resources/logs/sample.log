@@ -1,0 +1,5 @@
+[2025-04-01 01:00:00] INFO User login successful for user: john_doe
+[2025-04-01 10:05:23] ERROR Failed to connect to database
+[2025-04-02 10:15:45] Disk space running low
+[2025-04-01 09:17:30] INFO File uploaded successfully by user: alice
+[2025-04-01 10:20:00] ERROR NullPointerException at LogAnalyzer.java:45
