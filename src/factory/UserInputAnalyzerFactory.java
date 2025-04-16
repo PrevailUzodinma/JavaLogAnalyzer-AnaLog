@@ -85,4 +85,20 @@ public class UserInputAnalyzerFactory implements AnalyzerFactory {
             }
         }
     }
+
+    // Method to handle the summary input and validation
+    public String getSummaryInput(Scanner scanner) {
+        String showSummary;
+        while (true) {
+            System.out.print("Do you want to see a summary report after the analysis is done? (y/n): ");
+            showSummary = scanner.nextLine().toLowerCase();
+
+            if (showSummary.equals("y") || showSummary.equals("n")) {
+                return showSummary;  // Return the valid input
+            } else {
+                System.out.println("Invalid input. Please enter 'y' for yes or 'n' for no.");
+            }
+
+        }
+    }
 }
