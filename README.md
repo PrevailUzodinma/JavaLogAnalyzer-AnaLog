@@ -4,7 +4,7 @@ AnaLog - A Java Log File Analyzer
 Project Overview
 ----------------
 
-The **LogAnalyzer** is a Java-based application designed to analyze and process log files. It offers multiple analysis options, including level-based, keyword-based, day-based, and time-range-based analysis. The tool uses Object-Oriented principles, design patterns such as Singleton, Factory, Strategy, and Decorator, and relies on Maven for project management and dependencies. The project is designed for maintainability, scalability, and extensibility, making it suitable for analyzing large log files with various filter criteria.
+**AnaLog** is a Java-based Log Analyzer developed by **Prevail Uzodinma** as part of the coursework for the *Advanced Software Development* module. This project goes beyond fulfilling academic requirements---it serves as a practical demonstration of design principles, object-oriented programming, and architectural patterns applied in real-world Java development. It is designed to analyze and process log files. It offers multiple analysis options, including level-based, keyword-based, day-based, and time-range-based analysis. The tool uses Object-Oriented principles, design patterns such as Singleton, Factory, Strategy, and Decorator, and relies on Maven for project management and dependencies. The project is designed for maintainability, scalability, and extensibility, making it suitable for analyzing large log files with various filter criteria.
 
 
 Features
@@ -143,6 +143,22 @@ You can select an analysis type and the tool will prompt for additional input ba
 Usage
 -----
 
+### Sample Log Format
+
+AnaLog expects each line of the log file to follow this format:
+
+```
+[2024-04-14 10:23:45] [INFO] Application started successfully
+```
+
+Where:
+
+-   Timestamp = `[yyyy-MM-dd HH:mm:ss]`
+
+-   Level = `[INFO]`, `[ERROR]`, `[DEBUG]`, etc.
+
+-   Message = any free-text string
+
 ### Available Analysis Types
 
 1.  **Level-Based Analysis**: Analyzes logs by severity level (e.g., INFO, ERROR).
@@ -190,6 +206,7 @@ The `SummaryDecorator` pattern is used to add additional functionality (like gen
 
 Acknowledgments
 ---------------
+Special thanks to the course lecturer and peers for feedback and support throughout the project.
 
 -   [Maven](https://maven.apache.org/) for build automation.
 
