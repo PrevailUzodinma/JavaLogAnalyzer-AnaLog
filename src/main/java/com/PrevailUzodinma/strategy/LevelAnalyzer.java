@@ -4,7 +4,7 @@ import com.PrevailUzodinma.model.LogEntry;
 
 import java.util.*;
 
-public class CountByLevelAnalyzer implements LogAnalyzer {
+public class LevelAnalyzer implements LogAnalyzer {
 
     @Override
     public List<LogEntry> analyze(List<LogEntry> entries) {

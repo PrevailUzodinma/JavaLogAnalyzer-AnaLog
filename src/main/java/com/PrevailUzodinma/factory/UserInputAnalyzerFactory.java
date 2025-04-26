@@ -15,7 +15,7 @@ public class UserInputAnalyzerFactory implements AnalyzerFactory {
         String pattern = LogConfig.getInstance().getTimestampPattern();
         switch (type.toLowerCase()) {
             case "1":
-                return new CountByLevelAnalyzer();
+                return new LevelAnalyzer();
 
             case "2":
                 System.out.print("Enter the keyword to search for: ");
