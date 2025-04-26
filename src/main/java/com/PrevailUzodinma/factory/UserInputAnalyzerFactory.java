@@ -20,6 +20,10 @@ public class UserInputAnalyzerFactory implements AnalyzerFactory {
             case "2":
                 System.out.print("Enter the keyword to search for: ");
                 String keyword = scanner.nextLine(); // Dynamically input keyword
+                if (keyword.isEmpty()) {
+                    System.out.println("Invalid keyword. Please try again.");
+                    return null; // Returning null will send control back to main
+                }
                 return new KeywordSearchAnalyzer(keyword);
 
             case "3":

@@ -68,16 +68,17 @@ public class Main {
             // USING FACTORY DESIGN PATTERN: create the appropriate analyzer based on the user's choice and pass scanner for dynamic input
             LogAnalyzer baseAnalyzer = analyzerFactory.createAnalyzer(choice, scanner);
 
-            // Ask for summary input and validate
-            String showSummary = analyzerFactory.getSummaryInput(scanner);
-
-            // If user wants summary, wrap the base analyzer with the SummaryDecorator
-            if (showSummary.equals("y")) {
-                baseAnalyzer = new SummaryDecorator(baseAnalyzer);
-            }
-
-            // Perform the analysis and display results
+            // Only proceed if analyzer creation succeeded
             if (baseAnalyzer != null) {
+                // Ask for summary input and validate
+                String showSummary = analyzerFactory.getSummaryInput(scanner);
+
+                // If user wants summary, wrap the base analyzer with the SummaryDecorator
+                if (showSummary.equals("y")) {
+                    baseAnalyzer = new SummaryDecorator(baseAnalyzer);
+                }
+
+                // Perform the analysis and display results
                 baseAnalyzer.analyze(logs);
             } else {
                 System.out.println("Invalid analyzer type, please select based on the options above.");
