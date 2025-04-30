@@ -84,7 +84,7 @@ LogAnalyzer/
 │                   ├── singleton/              # Singleton pattern for LogConfig
 │                   ├── model/                  # Data models (LogEntry, etc.)
 │                   ├── decorator/              # Decorator pattern for dynamic summaries
-│                   └── utils/                  # Utility classes and helpers
+│    └── tests/                                 # Unit tests with JUNIT5
 ├── .gitignore               # Git ignore file for IDE and build artifacts
 ├── target/                  # Maven output (builds and packaged JAR)
 └── logs/                    # Sample logs for testing (placed in 'resources')
