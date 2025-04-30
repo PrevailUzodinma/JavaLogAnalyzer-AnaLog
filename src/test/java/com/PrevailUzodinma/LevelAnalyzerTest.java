@@ -17,7 +17,7 @@ class LevelAnalyzerTest {
 
     @BeforeEach
     void setUp() {
-        analyzer = new LevelAnalyzer();  // no arguments
+        analyzer = new LevelAnalyzer();
 
         sampleLogs = List.of(
                 new LogEntry(LocalDateTime.parse("2024-04-01T10:00:00"), "INFO", "System started"),
