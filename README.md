@@ -76,7 +76,7 @@ LogAnalyzer/
 │       └── java/
 │           └── com/
 │               └── PrevailUzodinma/
-│                   ├── Main.java                # Main entry point of the application
+│                   ├── Main.java               # Main entry point of the application
 │                   ├── factory/                # Factory classes for creating analyzers
 │                   ├── strategy/               # Strategy pattern for various analysis types
 │                   ├── reader/                 # Log file reading classes
