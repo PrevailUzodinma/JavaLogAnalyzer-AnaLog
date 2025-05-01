@@ -8,8 +8,6 @@
     <artifactId>log-analyzer</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <!-- Specifying the final name for my generated JAR file -->
-    <name>loganalyzer</name>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -32,6 +30,9 @@
         </dependency>
     </dependencies>
     <build>
+        <!-- Specifying the final name for my generated JAR file -->
+        <finalName>AnaLog</finalName>
+
         <plugins>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>

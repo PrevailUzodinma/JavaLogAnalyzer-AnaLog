@@ -104,21 +104,21 @@ mvn clean package
 
 ```
 
-This will create a `loganalyzer.jar` file in the `target/` directory.
+This will create a `AnaLog.jar` file in the `target/` directory.
 
 ### 2\. Run the Application
 
 Once the project is packaged, you can run the application using the following command from the `target/` directory:
 
 ```
-java -jar loganalyzer.jar <log-file-path>
+java -jar AnaLog.jar <log-file-path>
 
 ```
 
 Replace `<log-file-path>` with the path to the log file you wish to analyze. For example:
 
 ```
-java -jar loganalyzer.jar ./classes/logs/sample.log
+java -jar AnaLog.jar ./classes/logs/sample.log
 
 ```
 Fallback: Use filepath `./classes/logs/sample.log` to make use of our sample log file. During the build Maven stores it in `target/classes/logs` directory.
