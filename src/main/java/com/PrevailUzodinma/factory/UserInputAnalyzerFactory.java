@@ -11,7 +11,7 @@ public class UserInputAnalyzerFactory implements AnalyzerFactory {
 
     // Method to create analyzer based on user input
     @Override
-    public LogAnalyzer createAnalyzer(String type, Scanner scanner) {
+    public LogAnalyzerStrategy createAnalyzer(String type, Scanner scanner) {
         String pattern = LogConfig.getInstance().getTimestampPattern();
         switch (type.toLowerCase()) {
             case "1":
@@ -41,7 +41,7 @@ public class UserInputAnalyzerFactory implements AnalyzerFactory {
     }
 
     // Method for day-based analysis with input validation
-    private LogAnalyzer createDayBasedAnalyzer(Scanner scanner) {
+    private LogAnalyzerStrategy createDayBasedAnalyzer(Scanner scanner) {
         while (true) {
             try {
                 System.out.print("Enter the date (yyyy-MM-dd) for which you want to analyze logs: ");
@@ -55,7 +55,7 @@ public class UserInputAnalyzerFactory implements AnalyzerFactory {
     }
 
     // Method for hour-based analysis with input validation
-    private LogAnalyzer createHourBasedAnalyzer(Scanner scanner) {
+    private LogAnalyzerStrategy createHourBasedAnalyzer(Scanner scanner) {
         String pattern = LogConfig.getInstance().getTimestampPattern();
         while (true) {
             try {
@@ -70,7 +70,7 @@ public class UserInputAnalyzerFactory implements AnalyzerFactory {
     }
 
     // Method for time-range analysis with input validation
-    private LogAnalyzer createTimeRangeAnalyzer(Scanner scanner) {
+    private LogAnalyzerStrategy createTimeRangeAnalyzer(Scanner scanner) {
         String pattern = LogConfig.getInstance().getTimestampPattern();
         while (true) {
             try {

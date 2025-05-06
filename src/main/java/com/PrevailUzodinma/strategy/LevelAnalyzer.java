@@ -4,7 +4,7 @@ import com.PrevailUzodinma.model.LogEntry;
 
 import java.util.*;
 
-public class LevelAnalyzer implements LogAnalyzer {
+public class LevelAnalyzer implements LogAnalyzerStrategy {
 
     @Override
     public List<LogEntry> analyze(List<LogEntry> entries) {
@@ -23,6 +23,7 @@ public class LevelAnalyzer implements LogAnalyzer {
         }
 
         System.out.println("\nLog Level Counts:");
+        System.out.println("====================");
         List<LogEntry> filtered = new ArrayList<>();
 
         for (Map.Entry<String, Integer> entry : levelCounts.entrySet()) {

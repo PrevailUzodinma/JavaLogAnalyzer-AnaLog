@@ -66,7 +66,7 @@ public class Main {
             }
 
             // USING FACTORY DESIGN PATTERN: create the appropriate analyzer based on the user's choice and pass scanner for dynamic input
-            LogAnalyzer baseAnalyzer = analyzerFactory.createAnalyzer(choice, scanner);
+            LogAnalyzerStrategy baseAnalyzer = analyzerFactory.createAnalyzer(choice, scanner);
 
             // Only proceed if analyzer creation succeeded
             if (baseAnalyzer != null) {

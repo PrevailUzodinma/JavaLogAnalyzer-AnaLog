@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class KeywordSearchAnalyzer implements LogAnalyzer {
+public class KeywordSearchAnalyzer implements LogAnalyzerStrategy {
     private final String keyword;
 
     public KeywordSearchAnalyzer(String keyword) {
@@ -27,6 +27,7 @@ public class KeywordSearchAnalyzer implements LogAnalyzer {
             System.out.println("No logs found with the keyword: " + keyword);
         } else {
             System.out.println("\nLogs containing keyword: \"" + keyword + "\"");
+            System.out.println("==============================================\n");
             for (LogEntry entry : filtered) {
                 System.out.println(entry);
             }

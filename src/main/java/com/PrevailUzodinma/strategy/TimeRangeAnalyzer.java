@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-public class TimeRangeAnalyzer implements LogAnalyzer {
+public class TimeRangeAnalyzer implements LogAnalyzerStrategy {
 
     private final LocalDateTime start;
     private final LocalDateTime end;
@@ -41,6 +41,7 @@ public class TimeRangeAnalyzer implements LogAnalyzer {
         }
 
         System.out.println("Total logs in the specified time range: " + totalLogsInRange);
+        System.out.println("============================================================\n");
 
         boolean found = false;
 

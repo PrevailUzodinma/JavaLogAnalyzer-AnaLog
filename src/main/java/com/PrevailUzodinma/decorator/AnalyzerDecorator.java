@@ -1,14 +1,14 @@
 package com.PrevailUzodinma.decorator;
 
 import com.PrevailUzodinma.model.LogEntry;
-import com.PrevailUzodinma.strategy.LogAnalyzer;
+import com.PrevailUzodinma.strategy.LogAnalyzerStrategy;
 
 import java.util.List;
 
-public abstract class AnalyzerDecorator implements LogAnalyzer {
-    protected final LogAnalyzer wrappedAnalyzer;
+public abstract class AnalyzerDecorator implements LogAnalyzerStrategy {
+    protected final LogAnalyzerStrategy wrappedAnalyzer;
 
-    public AnalyzerDecorator(LogAnalyzer wrappedAnalyzer) {
+    public AnalyzerDecorator(LogAnalyzerStrategy wrappedAnalyzer) {
         this.wrappedAnalyzer = wrappedAnalyzer;
     }
 

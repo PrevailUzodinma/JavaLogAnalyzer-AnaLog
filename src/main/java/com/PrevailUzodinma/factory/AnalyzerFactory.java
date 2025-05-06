@@ -1,12 +1,10 @@
 package com.PrevailUzodinma.factory;
 
-import com.PrevailUzodinma.strategy.LogAnalyzer;
-import com.PrevailUzodinma.model.LogEntry;
+import com.PrevailUzodinma.strategy.LogAnalyzerStrategy;
 
-import java.util.List;
 import java.util.Scanner;
 
 public interface AnalyzerFactory {
-    LogAnalyzer createAnalyzer(String type, Scanner scanner);
+    LogAnalyzerStrategy createAnalyzer(String type, Scanner scanner);
     String getSummaryInput(Scanner scanner);
 }
