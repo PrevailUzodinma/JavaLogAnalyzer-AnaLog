@@ -29,17 +29,17 @@ public class SimpleLogReader implements LogReader {
         // Check if the file exists and is readable
         File file = new File(filePath);
         if (!file.exists()) {
-            System.out.println("Error: Log file not found at path: " + filePath);
+            System.out.println("\nError: Log file not found at path: " + filePath);
             return Collections.emptyList();
         }
 
         if (!file.canRead()) {
-            System.out.println("Error: Log file cannot be read due to permission issues.");
+            System.out.println("\nError: Log file cannot be read due to permission issues.");
             return Collections.emptyList();
         }
 
         if (file.length() == 0) {
-            System.out.println("Warning: This log file is empty.");
+            System.out.println("\nWarning: This log file is empty.");
             return Collections.emptyList();
         }
 
@@ -56,7 +56,7 @@ public class SimpleLogReader implements LogReader {
             }
 
         } catch (IOException e) {
-            System.out.println("Error: Failed to read log file due to I/O error: " + e.getMessage());
+            System.out.println("\nError: Failed to read log file due to I/O error: " + e.getMessage());
             return Collections.emptyList();  // Return empty list on error
         }
 

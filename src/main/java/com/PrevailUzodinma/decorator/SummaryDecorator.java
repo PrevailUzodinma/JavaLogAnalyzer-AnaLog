@@ -1,7 +1,7 @@
 package com.PrevailUzodinma.decorator;
 
 import com.PrevailUzodinma.model.LogEntry;
-import com.PrevailUzodinma.strategy.LogAnalyzer;
+import com.PrevailUzodinma.strategy.LogAnalyzerStrategy;
 
 import java.time.LocalDateTime;
 import java.util.*;
@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class SummaryDecorator extends AnalyzerDecorator {
 
-    public SummaryDecorator(LogAnalyzer wrappedAnalyzer) {
+    public SummaryDecorator(LogAnalyzerStrategy wrappedAnalyzer) {
         super(wrappedAnalyzer);
     }
 

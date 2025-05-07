@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-public class TimeBasedAnalyzer implements LogAnalyzer {
+public class TimeBasedAnalyzer implements LogAnalyzerStrategy {
 
     private final DateTimeFormatter formatter;
     private final String label;
@@ -28,6 +28,7 @@ public class TimeBasedAnalyzer implements LogAnalyzer {
         }
 
         System.out.println("\nLogs grouped by " + label + ":");
+        System.out.println("==================================\n");
 
         Map<String, Integer> groupedLogs = new HashMap<>();
         Map<String, List<LogEntry>> logsByTime = new HashMap<>();

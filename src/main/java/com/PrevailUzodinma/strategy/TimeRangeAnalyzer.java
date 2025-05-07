@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-public class TimeRangeAnalyzer implements LogAnalyzer {
+public class TimeRangeAnalyzer implements LogAnalyzerStrategy {
 
     private final LocalDateTime start;
     private final LocalDateTime end;
@@ -23,11 +23,12 @@ public class TimeRangeAnalyzer implements LogAnalyzer {
     @Override
     public List<LogEntry> analyze(List<LogEntry> entries) {
         if (entries.isEmpty()) {
-            System.out.println("Oops! Sorry, there are no logs in this file to analyze.");
+            System.out.println("\nOops! Sorry, there are no logs in this file to analyze.");
             return Collections.emptyList();
         }
 
         System.out.printf("\nLogs between %s and %s:\n", start.format(formatter), end.format(formatter));
+        System.out.println("============================================\n");
 
         List<LogEntry> filtered = new ArrayList<>();
         int totalLogsInRange = 0;
@@ -50,7 +51,7 @@ public class TimeRangeAnalyzer implements LogAnalyzer {
         }
 
         if (!found) {
-            System.out.println("No logs found in the specified time range.");
+            System.out.println("\nNo logs found in the specified time range.");
         }
 
         return filtered;

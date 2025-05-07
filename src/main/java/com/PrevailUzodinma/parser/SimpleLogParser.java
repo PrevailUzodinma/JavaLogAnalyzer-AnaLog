@@ -12,7 +12,7 @@ public class SimpleLogParser implements LogParser {
     public LogEntry parse(String logLine) {
         // Check for null or empty log line
         if (logLine == null || logLine.trim().isEmpty()) {
-            System.out.println("Invalid log line: Empty or null.");
+            System.out.println("\nInvalid log line: Empty or null.");
             return null;
         }
 
@@ -22,7 +22,7 @@ public class SimpleLogParser implements LogParser {
         // Split the log into timestamp and the rest of the string
         String[] parts = logLine.split(" ", 3); // I'm expecting 3 parts: timestamp, level, message
         if (parts.length < 3) {
-            System.out.println("Invalid log line: Expected timestamp, level, and message.");
+            System.out.println("\nInvalid log line: Expected timestamp, level, and message.");
             return null;
         }
 
@@ -31,7 +31,7 @@ public class SimpleLogParser implements LogParser {
         try {
             timestamp = LocalDateTime.parse(parts[0] + " " + parts[1], formatter);
         } catch (Exception e) {
-            System.out.println("Invalid timestamp format: " + parts[0] + " " + parts[1]);
+            System.out.println("\nInvalid timestamp format: " + parts[0] + " " + parts[1]);
             return null;
         }
 

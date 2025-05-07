@@ -118,10 +118,10 @@ java -jar AnaLog.jar <log-file-path>
 Replace `<log-file-path>` with the path to the log file you wish to analyze. For example:
 
 ```
-java -jar AnaLog.jar ./classes/logs/sample.log
+java -jar ./target/AnaLog.jar ./target/classes/logs/sample.log
 
 ```
-Fallback: Use filepath `./classes/logs/sample.log` to make use of our sample log file. During the build Maven stores it in `target/classes/logs` directory.
+Fallback: Use filepath `./target/classes/logs/sample.log` to make use of our sample log file. During the build Maven stores it in `target/classes/logs` directory.
 ### 3\. Interactive Menu
 
 Upon running the application, you will be presented with a menu to choose an analysis type:
