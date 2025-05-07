@@ -24,6 +24,7 @@ public class LevelAnalyzer implements LogAnalyzerStrategy {
 
         System.out.println("\nLog Level Counts:");
         System.out.println("===================");
+
         List<LogEntry> filtered = new ArrayList<>();
 
         for (Map.Entry<String, Integer> entry : levelCounts.entrySet()) {

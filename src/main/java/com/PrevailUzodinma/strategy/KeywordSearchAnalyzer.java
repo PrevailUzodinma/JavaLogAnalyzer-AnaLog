@@ -28,6 +28,7 @@ public class KeywordSearchAnalyzer implements LogAnalyzerStrategy {
         } else {
             System.out.println("\nLogs containing keyword: \"" + keyword + "\"");
             System.out.println("============================================\n");
+
             for (LogEntry entry : filtered) {
                 System.out.println(entry);
             }

@@ -42,6 +42,7 @@ public class TimeRangeAnalyzer implements LogAnalyzerStrategy {
         }
 
         System.out.println("Total logs in the specified time range: " + totalLogsInRange);
+        System.out.println("============================================================\n");
 
         boolean found = false;
 
