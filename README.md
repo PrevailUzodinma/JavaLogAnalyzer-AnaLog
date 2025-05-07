@@ -43,7 +43,7 @@ Follow these steps to set up the project on your local machine:
 Clone the repository to your local machine using Git:
 
 ```
-git clone https://github.com/yourusername/LogAnalyzer.git
+git clone https://github.com/PrevailUzodinma/LogAnalyzer.git
 cd LogAnalyzer
 
 ```
@@ -111,17 +111,17 @@ This will create a `loganalyzer.jar` file in the `target/` directory.
 Once the project is packaged, you can run the application using the following command from the `target/` directory:
 
 ```
-java -jar loganalyzer.jar <log-file-path>
+java -jar Analog.jar <log-file-path>
 
 ```
 
 Replace `<log-file-path>` with the path to the log file you wish to analyze. For example:
 
 ```
-java -jar loganalyzer.jar ./classes/logs/sample.log
+java -jar AnaLog.jar ./target/classes/logs/sample.log
 
 ```
-Fallback: Use filepath `./classes/logs/sample.log` to make use of our sample log file. During the build Maven stores it in `target/classes/logs` directory.
+Fallback: Use filepath `./target/classes/logs/sample.log` to make use of our sample log file. During the build Maven stores it in `target/classes/logs` directory.
 ### 3\. Interactive Menu
 
 Upon running the application, you will be presented with a menu to choose an analysis type:
