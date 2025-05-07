@@ -23,7 +23,7 @@ public class TimeRangeAnalyzer implements LogAnalyzerStrategy {
     @Override
     public List<LogEntry> analyze(List<LogEntry> entries) {
         if (entries.isEmpty()) {
-            System.out.println("\nOops! Sorry, there are no logs in this file to analyze.");
+            System.out.println("Oops! Sorry, there are no logs in this file to analyze.\n");
             return Collections.emptyList();
         }
 
@@ -41,7 +41,7 @@ public class TimeRangeAnalyzer implements LogAnalyzerStrategy {
             }
         }
 
-        System.out.println("Total logs in the specified time range: " + totalLogsInRange);
+        System.out.println("\nTotal logs in the specified time range: " + totalLogsInRange);
         System.out.println("============================================================\n");
 
         boolean found = false;
