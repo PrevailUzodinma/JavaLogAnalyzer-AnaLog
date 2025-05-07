@@ -29,6 +29,7 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
     <build>
         <!-- Specifying the final name for my generated JAR file -->
         <finalName>AnaLog</finalName>
@@ -48,5 +49,6 @@
             </plugin>
         </plugins>
     </build>
+
 
 </project>

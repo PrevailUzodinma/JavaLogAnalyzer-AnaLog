@@ -59,10 +59,11 @@ public class TimeBasedAnalyzer implements LogAnalyzerStrategy {
         }
 
         if (!foundLogs) {
-            System.out.println("No logs on this " + label + ": " + targetDate);
+            System.out.println("\nNo logs on this " + label + ": " + targetDate);
         } else {
             int totalLogs = groupedLogs.values().stream().mapToInt(Integer::intValue).sum();
             System.out.println("Total logs for " + label + ": " + totalLogs);
+            System.out.println("=========================================\n");
 
             for (Map.Entry<String, Integer> entry : groupedLogs.entrySet()) {
                 System.out.println("\n" + entry.getKey() + ": " + entry.getValue() + " logs");

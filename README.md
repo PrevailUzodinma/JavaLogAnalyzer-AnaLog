@@ -43,7 +43,7 @@ Follow these steps to set up the project on your local machine:
 Clone the repository to your local machine using Git:
 
 ```
-git clone https://github.com/yourusername/LogAnalyzer.git
+git clone https://github.com/PrevailUzodinma/LogAnalyzer.git
 cd LogAnalyzer
 
 ```
@@ -87,7 +87,7 @@ LogAnalyzer/
 │    └── tests/                                 # Unit tests with JUNIT5
 ├── .gitignore               # Git ignore file for IDE and build artifacts
 ├── target/                  # Maven output (builds and packaged JAR)
-└── logs/                    # Sample logs for testing (placed in 'resources')
+└── logs/                    # Sample logs for testing
 
 ```
 
@@ -122,6 +122,13 @@ java -jar ./target/AnaLog.jar ./target/classes/logs/sample.log
 
 ```
 Fallback: Use filepath `./target/classes/logs/sample.log` to make use of our sample log file. During the build Maven stores it in `target/classes/logs` directory.
+=======
+ java -jar target/AnaLog.jar ./logs/sample.log
+
+
+```
+Fallback: Use filepath `./logs/sample.log` to make use of our sample log file.
+>>>>>>> 1cd5ea917932aee971780d5688ecd23309490256
 ### 3\. Interactive Menu
 
 Upon running the application, you will be presented with a menu to choose an analysis type:
